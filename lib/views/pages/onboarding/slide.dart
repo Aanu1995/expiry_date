@@ -14,13 +14,13 @@ class Slide extends StatelessWidget {
     return Column(
       children: [
         Expanded(
-          flex: 5,
+          flex: 4,
           child: Stack(
             fit: StackFit.expand,
             children: [
               Image.asset(
                 slideModel.image!,
-                fit: BoxFit.cover,
+                fit: BoxFit.fitWidth,
               ),
               Align(
                 alignment: Alignment.bottomCenter,
@@ -42,7 +42,7 @@ class Slide extends StatelessWidget {
         ),
         const VMargin(multiplier: 5),
         Expanded(
-          flex: 3,
+          flex: 4,
           child: Offstage(),
         ),
       ],

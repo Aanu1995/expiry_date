@@ -54,6 +54,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             child: Container(
               width: double.maxFinite,
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              margin: EdgeInsets.only(bottom: 16.0),
               child: Stack(
                 alignment: Alignment.center,
                 children: [
@@ -74,7 +75,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     child: InkWell(
                       child: Container(
                         height: 35.0,
-                        width: 90.0,
+                        width: 94.0,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20.0),
