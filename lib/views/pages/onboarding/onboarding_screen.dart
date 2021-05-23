@@ -1,4 +1,6 @@
+import 'package:expire_date/views/pages/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../models/slide_model.dart';
@@ -34,27 +36,32 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          Expanded(
-            child: PageView(
-              controller: _pageController,
-              children: [
-                for (int index = 0; index < slides.length; index++)
-                  Slide(slides[index], progress(index))
-              ],
-              onPageChanged: (index) => setState(() {
-                currentSlideIndex = index;
-              }),
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle(
+        statusBarColor: Color(0xFFCEE0BF).withOpacity(0.3),
+        statusBarIconBrightness: Brightness.dark,
+        statusBarBrightness: Brightness.light,
+      ),
+      child: Scaffold(
+        body: Column(
+          children: [
+            Expanded(
+              child: PageView(
+                controller: _pageController,
+                children: [
+                  for (int index = 0; index < slides.length; index++)
+                    Slide(slides[index], progress(index))
+                ],
+                onPageChanged: (index) => setState(() {
+                  currentSlideIndex = index;
+                }),
+              ),
             ),
-          ),
-          const VMargin(multiplier: 5),
-          SafeArea(
-            child: Container(
+            const VMargin(multiplier: 2),
+            Container(
               width: double.maxFinite,
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              margin: EdgeInsets.only(bottom: 16.0),
+              margin: EdgeInsets.only(bottom: 24.0),
               child: Stack(
                 alignment: Alignment.center,
                 children: [
@@ -73,6 +80,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   Align(
                     alignment: Alignment.centerRight,
                     child: InkWell(
+                      splashColor: ColorUtils.primary,
                       child: Container(
                         height: 35.0,
                         width: 94.0,
@@ -86,22 +94,27 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           ),
                         ),
                         child: Text(
-                          "Skip",
+                          currentSlideIndex < 2 ? "Skip" : "Finish",
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 17.0,
                           ),
                         ),
                       ),
-                      onTap: () {},
+                      onTap: () => finish(context),
                     ),
                   ),
                 ],
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
+  }
+
+  void finish(BuildContext context) {
+    Navigator.of(context)
+        .pushReplacement(MaterialPageRoute(builder: (context) => HomePage()));
   }
 }

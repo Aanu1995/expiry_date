@@ -16,7 +16,7 @@ class SlideModel {
 
 List<SlideModel> onboardingSlides = [
   SlideModel(
-    image: ImageUtils.slide2,
+    image: ImageUtils.slide1,
     title: "Do With Little",
     description: "Let's do something wholesome with what you have",
   ),
@@ -26,7 +26,7 @@ List<SlideModel> onboardingSlides = [
     description: "Track all foods in your inventory by expiry dates",
   ),
   SlideModel(
-    image: ImageUtils.slide2,
+    image: ImageUtils.slide3,
     title: "Easy Editing",
     description: "Edit items seamlessly as you go",
   )
