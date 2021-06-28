@@ -1,7 +1,7 @@
 name: expire_date
 description: A new Flutter project.
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 version: 1.0.0+1
 
@@ -19,6 +19,7 @@ dependencies:
   smooth_page_indicator: ^0.3.0-nullsafety.0
   step_progress_indicator: ^1.0.0
   flutter_svg: ^0.22.0
+  flutter_screenutil: ^5.0.0+2
 
   # Local Storage
   objectbox: ^1.0.0
@@ -38,7 +39,6 @@ flutter_icons:
   image_path: "assets/icons/logo.png"
 
 flutter:
-
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:

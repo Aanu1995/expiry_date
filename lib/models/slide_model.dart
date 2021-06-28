@@ -18,7 +18,7 @@ List<SlideModel> onboardingSlides = [
   SlideModel(
     image: ImageUtils.slide1,
     title: "Do With Little",
-    description: "Let's do something wholesome with what you have",
+    description: "Let’s make something awesome with what you have. ",
   ),
   SlideModel(
     image: ImageUtils.slide2,

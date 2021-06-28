@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 import '../../../models/slide_model.dart';
 import '../../../utils/image_utils.dart';
-import '../../../utils/screen_utils.dart';
 
 class Slide extends StatelessWidget {
   final SlideModel slideModel;
   final double percentProgress;
-  const Slide(this.slideModel, this.percentProgress);
+  Slide(this.slideModel, this.percentProgress);
+
+  final _style = TextStyle(
+    fontSize: 18.0.sp,
+    fontWeight: FontWeight.w700,
+    letterSpacing: 0.33,
+    height: 1.4,
+  );
+
   @override
   Widget build(BuildContext context) {
-    final double progressCircleWidth = screenWidth(context) * 0.25;
-    final double imageWidth = progressCircleWidth / 2.0;
-
     return Column(
       children: [
         Expanded(
@@ -21,14 +26,12 @@ class Slide extends StatelessWidget {
           child: Stack(
             fit: StackFit.expand,
             children: [
-              Image.asset(
-                slideModel.image!,
-                fit: BoxFit.fitWidth,
-              ),
+              Image.asset(slideModel.image!, fit: BoxFit.fitWidth),
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Material(
                   elevation: 10.0,
+                  color: Colors.white,
                   shape: CircleBorder(),
                   child: Stack(
                     alignment: Alignment.center,
@@ -42,16 +45,16 @@ class Slide extends StatelessWidget {
                           begin: Alignment.bottomCenter,
                           colors: [Color(0xFF2F4858), Color(0xFF4BBD15)],
                         ),
-                        height: progressCircleWidth,
-                        width: progressCircleWidth,
+                        height: 88.h,
+                        width: 88.w,
                         padding: 0,
                         selectedStepSize: 2,
                         roundedCap: (_, __) => true,
                       ),
                       Image.asset(
                         ImageUtils.slideProgress,
-                        height: imageWidth,
-                        width: imageWidth,
+                        height: 38.h,
+                        width: 26.w,
                       ),
                     ],
                   ),
@@ -60,25 +63,25 @@ class Slide extends StatelessWidget {
             ],
           ),
         ),
-        const Spacer(flex: 1),
+        const Spacer(),
         Expanded(
           flex: 2,
           child: Column(
             children: [
               Text(
                 slideModel.title!,
-                style: const TextStyle(
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: _style,
               ),
-              const VMargin(multiplier: 4),
+              SizedBox(height: 16.h),
               SizedBox(
-                width: screenWidth(context) * 0.7,
+                width: 275.w,
                 child: Text(
                   slideModel.description!,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(fontSize: 18.0),
+                  style: _style.copyWith(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 16.0.sp,
+                  ),
                 ),
               )
             ],

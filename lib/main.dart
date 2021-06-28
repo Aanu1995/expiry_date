@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'utils/color_utils.dart';
 import 'views/pages/onboarding/onboarding_screen.dart';
@@ -24,14 +25,19 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Expiry Date',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: colorUtils.primarySwatch(),
-        fontFamily: "Open Sans",
-      ),
-      home: OnBoardingScreen(),
+    return ScreenUtilInit(
+      designSize: Size(375, 812), // Figma screen design size
+      builder: () {
+        return MaterialApp(
+          title: 'Expiry Date',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primarySwatch: colorUtils.primarySwatch(),
+            fontFamily: "Open Sans",
+          ),
+          home: OnBoardingScreen(),
+        );
+      },
     );
   }
 }

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 class ColorUtils {
   static Color primary = Color(0xFF4BBD15);
   static Color secondary = Color(0xFF129800);
+  static Color onBoardingScaffoldColor = Color(0XFFFDFFFE);
 
   MaterialColor primarySwatch() {
     return MaterialColor(primary.value, {

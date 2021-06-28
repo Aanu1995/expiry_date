@@ -1,11 +1,11 @@
-import 'package:expire_date/views/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../models/slide_model.dart';
 import '../../../utils/color_utils.dart';
-import '../../../utils/screen_utils.dart';
+import '../home_page.dart';
 import 'slide.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -43,6 +43,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         statusBarBrightness: Brightness.light,
       ),
       child: Scaffold(
+        backgroundColor: ColorUtils.onBoardingScaffoldColor,
         body: Column(
           children: [
             Expanded(
@@ -57,11 +58,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 }),
               ),
             ),
-            const VMargin(multiplier: 2),
+            const SizedBox(height: 8.0),
             Container(
               width: double.maxFinite,
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              margin: EdgeInsets.only(bottom: 24.0),
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              margin: const EdgeInsets.only(bottom: 33),
               child: Stack(
                 alignment: Alignment.center,
                 children: [
@@ -71,8 +72,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       count: slides.length,
                       effect: ExpandingDotsEffect(
                         activeDotColor: Theme.of(context).primaryColor,
-                        dotWidth: 8,
-                        dotHeight: 8,
+                        dotWidth: 8.h,
+                        dotHeight: 8.h,
+                        expansionFactor: 2.1,
                         dotColor: Color(0xFFA5BD99),
                       ),
                     ),
@@ -82,11 +84,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     child: InkWell(
                       splashColor: ColorUtils.primary,
                       child: Container(
-                        height: 35.0,
-                        width: 94.0,
+                        height: 38.h,
+                        width: 93.w,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20.0),
+                          borderRadius: BorderRadius.circular(48.r),
                           gradient: LinearGradient(
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
@@ -95,9 +97,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         ),
                         child: Text(
                           currentSlideIndex < 2 ? "Skip" : "Finish",
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: Colors.white,
-                            fontSize: 17.0,
+                            fontSize: 16.0.sp,
+                            letterSpacing: 0.4,
+                            fontWeight: FontWeight.w400,
                           ),
                         ),
                       ),
