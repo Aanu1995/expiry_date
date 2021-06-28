@@ -4,8 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../models/slide_model.dart';
-import '../../../utils/color_utils.dart';
-import '../home_page.dart';
+import '../../../utils/color_palette.dart';
+import '../../widgets/page_transition.dart';
+import '../bottom_bar_view.dart';
 import 'slide.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -43,7 +44,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         statusBarBrightness: Brightness.light,
       ),
       child: Scaffold(
-        backgroundColor: ColorUtils.onBoardingScaffoldColor,
+        backgroundColor: ColorPalette.onBoardingScaffoldColor,
         body: Column(
           children: [
             Expanded(
@@ -82,7 +83,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   Align(
                     alignment: Alignment.centerRight,
                     child: InkWell(
-                      splashColor: ColorUtils.primary,
+                      splashColor: ColorPalette.primary,
                       child: Container(
                         height: 38.h,
                         width: 93.w,
@@ -92,7 +93,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           gradient: LinearGradient(
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
-                            colors: [ColorUtils.primary, Color(0xFF008060)],
+                            colors: [ColorPalette.primary, Color(0xFF008060)],
                           ),
                         ),
                         child: Text(
@@ -118,7 +119,12 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   }
 
   void finish(BuildContext context) {
-    Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (context) => HomePage()));
+    Navigator.pushReplacement(
+      context,
+      PageTransition(
+        type: PageTransitionType.bottomToTop,
+        child: BottomBarView(),
+      ),
+    );
   }
 }

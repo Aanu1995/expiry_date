@@ -2,10 +2,12 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-class ColorUtils {
+class ColorPalette {
   static Color primary = Color(0xFF4BBD15);
   static Color secondary = Color(0xFF129800);
   static Color onBoardingScaffoldColor = Color(0XFFFDFFFE);
+  static Color homeScreenScaffoldColor = Color(0XFFEBEFF0);
+  static Color productsScreenScaffoldColor = Color(0xFFA6B8BD);
 
   MaterialColor primarySwatch() {
     return MaterialColor(primary.value, {

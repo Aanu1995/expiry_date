@@ -4,4 +4,7 @@ class ImageUtils {
   static final slide2 = "assets/images/slide2.png";
   static final slide3 = "assets/images/slide3.png";
   static final slideProgress = "assets/images/sub-progress.png";
+
+  // bottom nav bar icons
+  static final products = "assets/images/products.png";
 }
