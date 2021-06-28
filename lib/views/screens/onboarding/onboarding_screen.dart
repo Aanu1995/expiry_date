@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../models/slide_model.dart';
+import '../../../utils/app_utils.dart';
 import '../../../utils/color_palette.dart';
 import '../../widgets/page_transition.dart';
 import '../bottom_bar_view.dart';
@@ -97,7 +98,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           ),
                         ),
                         child: Text(
-                          currentSlideIndex < 2 ? "Skip" : "Finish",
+                          currentSlideIndex == (slides.length - 1)
+                              ? "Finish"
+                              : "Skip",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 16.0.sp,
@@ -106,7 +109,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           ),
                         ),
                       ),
-                      onTap: () => finish(context),
+                      onTap: () => finish(),
                     ),
                   ),
                 ],
@@ -118,7 +121,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     );
   }
 
-  void finish(BuildContext context) {
+  void finish() {
+    // save userOnboarding status to the local storage
+    setUserOnBoardingStatus();
+
     Navigator.pushReplacement(
       context,
       PageTransition(
